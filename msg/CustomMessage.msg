@@ -10,3 +10,4 @@
 #int32 result
 string content
 uint8 id
+bool my_bool
