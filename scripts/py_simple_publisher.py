@@ -5,7 +5,8 @@ import rclpy
 import time
 from rclpy.node import Node
 from std_msgs.msg import String
-from dis_tutorial1.msg import CustomMessage  # Make sure the import is correct
+from dis_tutorial1.msg import CustomMessage  
+import random
 
 """ def main(args=None):
     rclpy.init(args=args)
@@ -37,14 +38,16 @@ class MyPublisherNode(Node):
         self.publisher = self.create_publisher(CustomMessage, '/chat', 10)
         timer_period = 2  # seconds
         self.timer = self.create_timer(timer_period, self.publish_message)
+        self.message_id = 0
 
     def publish_message(self):
         msg = CustomMessage()
         msg.content = 'Hello, ROS 2!'
-        msg.id = 42
-        msg.my_bool = True
+        msg.id = self.message_id
+        msg.my_bool = bool(random.getrandbits(1))  # Randomly selected boolean
         self.publisher.publish(msg)
         self.get_logger().info('Published: {}'.format(msg))
+        self.message_id += 1
 
 def main(args=None):
     rclpy.init(args=args)
