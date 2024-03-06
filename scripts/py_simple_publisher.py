@@ -5,7 +5,7 @@ import rclpy
 import time
 from rclpy.node import Node
 from std_msgs.msg import String
-from HW1.msg import CustomMessage
+from dis_tutorial1.msg import CustomMessage  # Make sure the import is correct
 
 """ def main(args=None):
     rclpy.init(args=args)
@@ -26,12 +26,15 @@ from HW1.msg import CustomMessage
         time.sleep(1)
 
     node.destroy_node()
-    rclpy.shutdown() """
+    rclpy.shutdown()
+
+if __name__ == "__main__":
+    main() """
 
 class MyPublisherNode(Node):
     def __init__(self):
         super().__init__('my_publisher_node')
-        self.publisher = self.create_publisher(CustomMessage, 'custom_topic', 10)
+        self.publisher = self.create_publisher(CustomMessage, '/chat', 10)
         timer_period = 2  # seconds
         self.timer = self.create_timer(timer_period, self.publish_message)
 

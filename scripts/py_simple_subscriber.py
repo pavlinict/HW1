@@ -3,11 +3,11 @@
 import rclpy
 from rclpy.node import Node
 from std_msgs.msg import String
-from HW1.msg import CustomMessage
-""" 
+from dis_tutorial1.msg import CustomMessage 
+
 mynode = None
 
-def topic_callback(msg):
+""" def topic_callback(msg):
     global mynode
     mynode.get_logger().info('I heard: "%s"' % msg.data)
 
